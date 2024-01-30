@@ -1,4 +1,4 @@
 #! /usr/bin/bash
 rm -rf $HOME/neovim
-sed -i 's|'"$HOME"'/neovim/bin||g' ~/.profile
-source ~/.profile
+rm -f "$HOME/nvimsetup.sh"
+sed -i 's|. '"$HOME"'/nvimsetup.sh||g' ~/.bashrc
