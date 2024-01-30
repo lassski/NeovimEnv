@@ -1,9 +1,7 @@
-local home = os.getenv("HOME") -- Hakee kotihakemiston
-local pathExtension = home .. "/neovim/bin"
+require("variables")
 
 -- Määritellään muuttujia polkujen ja git-repon kanssa
 local repoURL = "https://github.com/neovim/neovim"
-local installPrefix = home .. "/neovim"
 local cloneDirectory = "neovim"
 
 -- Rakenna yksi komento, joka kloonaa repon, siivoaa tarvittaessa ja suorittaa rakennusprosessin
@@ -17,7 +15,6 @@ local command = "git clone " .. repoURL .. " " .. cloneDirectory .. " && " ..
 os.execute(command)
 
 -- Luodaan nvimsetup.sh ja kirjoitetaan sinne PATHin päivityskomento
-local nvimSetupPath = home .. "/nvimsetup.sh"
 local nvimSetupFile = io.open(nvimSetupPath, "w") -- "w" avaa tiedoston kirjoitusta varten, olettaen sen luomista
 if nvimSetupFile then
     nvimSetupFile:write("export PATH=$PATH:" .. pathExtension)
@@ -26,7 +23,6 @@ else
     print("Tiedoston luonti epäonnistui: " .. nvimSetupPath)
 end
 
-local bashrcPath = home .. "/.bashrc"
 local lineToAdd = ". " .. nvimSetupPath
 
 -- Luetaan .bashrc-tiedoston sisältö
@@ -68,4 +64,6 @@ os.execute("chmod a+rwx " .. nvimSetupPath)
 -- Päivittämään PATH ympäristömuuttujan nykyisessä Lua-prosessissa, 
 -- mutta tämä muutos ei ole pysyvä yli suorituskertojen
 -- os.setenv ei ole suoraan käytettävissä Luassa, joten voi olla tarpeen käyttää ulkopuolisia kirjastoja tai pure Lua -ratkaisuja
-print("Write \". ~/.bashrc\" to get nvim-command to work right away.")
+print("****************** NEOVIM INSTALLED ***************************")
+print("* Run \". ~/.bashrc\" to get nvim-command to work right away. *")
+print("***************************************************************")
