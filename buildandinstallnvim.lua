@@ -58,6 +58,16 @@ if not lineExists then
     end
 end
 
+local removeCommand = "rm -rf " .. nvimConfigPath
+local mkdirCommand = "mkdir " .. nvimConfigPath
+local copyCommand = "cp " .. nvimInitFile .. " " .. nvimConfigPath
+
+command =   "rm -rf " .. nvimConfigPath .. " && " ..
+            "mkdir " .. nvimConfigPath .. " && " ..
+            "cp " .. nvimInitFile .. " " .. nvimConfigPath
+
+os.execute(command)
+
 -- Muutetaan nvimsetup.sh-tiedoston käyttöoikeuksia
 os.execute("chmod a+rwx " .. nvimSetupPath)
 
