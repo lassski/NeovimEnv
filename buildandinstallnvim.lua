@@ -1,12 +1,26 @@
 require("variables")
+require("helpers")
+
+-- Fonts
+local command = "mkdir -p " .. fontsPathDest .. " && " ..
+            "cp " .. fontsPathOrigin .. "/*.ttf " .. fontsPathDest .. " && " ..
+            "fc-cache"
+
+os.execute(command)
 
 -- Määritellään muuttujia polkujen ja git-repon kanssa
 local repoURL = "https://github.com/neovim/neovim"
 local cloneDirectory = "neovim"
 
+local cloneExists = isdir(cloneDirectory)
+if not cloneExists then
+    os.execute("git clone " .. repoURL .. " " .. cloneDirectory)
+else
+    print("neovim git clone exists so we don't have download it.")
+end
+
 -- Rakenna yksi komento, joka kloonaa repon, siivoaa tarvittaessa ja suorittaa rakennusprosessin
-local command = "git clone " .. repoURL .. " " .. cloneDirectory .. " && " ..
-                "rm -rf " .. cloneDirectory .. "/build/ && " .. -- Suoraan poistaminen, `rm -rf` estää virheitä, jos kansiota ei ole
+command = "rm -rf " .. cloneDirectory .. "/build/ && " .. -- Suoraan poistaminen, `rm -rf` estää virheitä, jos kansiota ei ole
                 "cd " .. cloneDirectory .. " && " .. -- 'cd' tässä kohdassa ei aiheuta ongelmaa, koska kaikki on yhden komennon sisällä
                 "make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS=\"-DCMAKE_INSTALL_PREFIX=" .. installPrefix .. "\" " ..
                 "&& make install"
@@ -58,10 +72,8 @@ if not lineExists then
     end
 end
 
-local removeCommand = "rm -rf " .. nvimConfigPath
-local mkdirCommand = "mkdir " .. nvimConfigPath
-local copyCommand = "cp " .. nvimInitFile .. " " .. nvimConfigPath
 
+-- copy init.lua file to where neovim finds it
 command =   "rm -rf " .. nvimConfigPath .. " && " ..
             "mkdir " .. nvimConfigPath .. " && " ..
             "cp " .. nvimInitFile .. " " .. nvimConfigPath
