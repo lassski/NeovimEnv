@@ -1,8 +1,24 @@
 require("variables")
 require("helpers")
 
+-- TMUX and prerequisites
+local command = "cd " .. libEventPath .. " && " ..
+                "./configure --prefix=" .. localInstallPath .. " --enable-shared" .. " && " ..
+                "make && make install"
+os.execute(command)
+
+command =   "cd " .. ncursesPath .. " && " ..
+            "./configure --prefix=" .. localInstallPath .. " --with-shared --with-termlib --enable-pc-files --with-pkg-config-libdir=" .. localPkgConfigPath .. " && " ..
+            "make && make install"
+os.execute(command)
+
+command =   "cd " .. tmuxPath .. " && " ..
+            "PKG_CONFIG_PATH=" .. localPkgConfigPath .. " ./configure --prefix=" .. localInstallPath .. " && " ..
+            "make && make install"
+os.execute(command)
+
 -- Fonts
-local command = "mkdir -p " .. fontsPathDest .. " && " ..
+command = "mkdir -p " .. fontsPathDest .. " && " ..
             "cp " .. fontsPathOrigin .. "/*.ttf " .. fontsPathDest .. " && " ..
             "fc-cache"
 
@@ -32,6 +48,7 @@ os.execute(command)
 local nvimSetupFile = io.open(nvimSetupPath, "w") -- "w" avaa tiedoston kirjoitusta varten, olettaen sen luomista
 if nvimSetupFile then
     nvimSetupFile:write("export PATH=$PATH:" .. pathExtension)
+    nvimSetupFile:write("export LD_LIBRARY_PATH=" .. ldLibPath .. ":$LD_LIBRARY_PATH")
     nvimSetupFile:close()
 else
     print("Tiedoston luonti epäonnistui: " .. nvimSetupPath)
