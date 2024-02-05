@@ -97,7 +97,8 @@ command =   "rm -rf " .. nvimConfigPath .. " && " ..
 
 os.execute(command)
 
-command = "cp " .. tmuxConfigFilePath .. home
+command = "cp " .. tmuxConfigFilePath .. " " .. home
+os.execute(command)
 
 -- Muutetaan nvimsetup.sh-tiedoston käyttöoikeuksia
 os.execute("chmod a+rwx " .. nvimSetupPath)
