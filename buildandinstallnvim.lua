@@ -122,7 +122,7 @@ end
 -- command =   "rm -rf " .. nvimConfigPath .. " && " ..
 --            "mkdir " .. nvimConfigPath .. " && " ..
 --            "cp " .. nvimInitFile .. " " .. nvimConfigPath
-command = "rm -rf " .. nvimConfigPath .. " && " .. "cp -r " .. "starter/." .. nvimConfigPath
+command = "rm -rf " .. nvimConfigPath .. " && " .. "cp -r " .. "starter/. " .. nvimConfigPath
 os.execute(command)
 
 command = "cp " .. tmuxConfigFilePath .. " " .. home
@@ -130,6 +130,9 @@ os.execute(command)
 
 -- Muutetaan nvimsetup.sh-tiedoston käyttöoikeuksia
 os.execute("chmod a+rwx " .. nvimSetupPath)
+
+-- Install rust
+os.execute("curl https://sh.rustup.rs -sSf | sh")
 
 -- Päivittämään PATH ympäristömuuttujan nykyisessä Lua-prosessissa,
 -- mutta tämä muutos ei ole pysyvä yli suorituskertojen

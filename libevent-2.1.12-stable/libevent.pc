@@ -1,6 +1,6 @@
 #libevent pkg-config source file
 
-prefix=/Users/mikkomaatta/.local
+prefix=/home/codespace/.local
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
