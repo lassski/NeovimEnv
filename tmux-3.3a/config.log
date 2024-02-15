@@ -27,6 +27,7 @@ uname -v = #18~22.04.1-Ubuntu SMP Tue Nov 21 19:25:02 UTC 2023
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
+PATH: /home/codespace/.cargo/bin
 PATH: /usr/local/rvm/gems/ruby-3.2.2/bin
 PATH: /usr/local/rvm/gems/ruby-3.2.2@global/bin
 PATH: /usr/local/rvm/rubies/ruby-3.2.2/bin
@@ -66,7 +67,6 @@ PATH: /usr/bin
 PATH: /sbin
 PATH: /bin
 PATH: /usr/local/rvm/bin
-PATH: /home/codespace/neovim/binexport
 PATH: /home/codespace/neovim/bin
 
 
@@ -1336,7 +1336,7 @@ configure:4990: checking for util.h
 configure:4990: result: no
 configure:5002: checking for library containing sys_signame
 configure:5033: gcc -o conftest    conftest.c  >&5
-/usr/bin/ld: /tmp/ccqDUU9n.o: in function `main':
+/usr/bin/ld: /tmp/ccSWUXb2.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `sys_signame'
 collect2: error: ld returned 1 exit status
 configure:5033: $? = 1
@@ -1416,7 +1416,7 @@ configure:5176: $? = 0
 configure:5176: result: yes
 configure:5176: checking for proc_pidinfo
 configure:5176: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccua2XZw.o: in function `main':
+/usr/bin/ld: /tmp/ccf7QXZF.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `proc_pidinfo'
 collect2: error: ld returned 1 exit status
 configure:5176: $? = 1
@@ -1498,7 +1498,7 @@ configure: failed program was:
 configure:5176: result: no
 configure:5176: checking for getpeerucred
 configure:5176: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/cckPHvfR.o: in function `main':
+/usr/bin/ld: /tmp/ccZZobnZ.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `getpeerucred'
 collect2: error: ld returned 1 exit status
 configure:5176: $? = 1
@@ -1596,7 +1596,7 @@ configure:5213: $? = 0
 configure:5213: result: yes
 configure:5226: checking for closefrom
 configure:5226: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccEFNwrD.o: in function `main':
+/usr/bin/ld: /tmp/ccJmvs7M.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `closefrom'
 collect2: error: ld returned 1 exit status
 configure:5226: $? = 1
@@ -1686,7 +1686,7 @@ configure:5239: $? = 0
 configure:5239: result: yes
 configure:5252: checking for fgetln
 configure:5252: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccvzaoxr.o: in function `main':
+/usr/bin/ld: /tmp/ccwxOd6C.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `fgetln'
 collect2: error: ld returned 1 exit status
 configure:5252: $? = 1
@@ -1773,7 +1773,7 @@ configure: failed program was:
 configure:5252: result: no
 configure:5265: checking for freezero
 configure:5265: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccnjcmAt.o: in function `main':
+/usr/bin/ld: /tmp/ccCbYqrG.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `freezero'
 collect2: error: ld returned 1 exit status
 configure:5265: $? = 1
@@ -1860,7 +1860,7 @@ configure: failed program was:
 configure:5265: result: no
 configure:5278: checking for getdtablecount
 configure:5278: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccoQE4Mi.o: in function `main':
+/usr/bin/ld: /tmp/ccWsdgnJ.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `getdtablecount'
 collect2: error: ld returned 1 exit status
 configure:5278: $? = 1
@@ -1951,7 +1951,7 @@ configure:5291: $? = 0
 configure:5291: result: yes
 configure:5304: checking for getpeereid
 configure:5304: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccobvWqh.o: in function `main':
+/usr/bin/ld: /tmp/cc6UdPg0.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `getpeereid'
 collect2: error: ld returned 1 exit status
 configure:5304: $? = 1
@@ -2043,7 +2043,7 @@ configure:5317: $? = 0
 configure:5317: result: yes
 configure:5330: checking for getprogname
 configure:5330: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccUoj5L5.o: in function `main':
+/usr/bin/ld: /tmp/ccbyTOnM.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `getprogname'
 collect2: error: ld returned 1 exit status
 configure:5330: $? = 1
@@ -2140,7 +2140,7 @@ configure:5356: $? = 0
 configure:5356: result: yes
 configure:5369: checking for setproctitle
 configure:5369: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccYSM6pH.o: in function `main':
+/usr/bin/ld: /tmp/ccTC5wMo.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `setproctitle'
 collect2: error: ld returned 1 exit status
 configure:5369: $? = 1
@@ -2235,7 +2235,7 @@ configure:5382: $? = 0
 configure:5382: result: yes
 configure:5395: checking for strlcat
 configure:5395: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccqqMiqu.o: in function `main':
+/usr/bin/ld: /tmp/ccorxeVa.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `strlcat'
 collect2: error: ld returned 1 exit status
 configure:5395: $? = 1
@@ -2327,7 +2327,7 @@ configure: failed program was:
 configure:5395: result: no
 configure:5408: checking for strlcpy
 configure:5408: gcc -o conftest    conftest.c -lm  >&5
-/usr/bin/ld: /tmp/ccNORcLw.o: in function `main':
+/usr/bin/ld: /tmp/cc5EnwDc.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:5408: $? = 1
@@ -2441,7 +2441,7 @@ conftest.c:53:9: warning: implicit declaration of function 'strtonum'; did you m
    53 | return (strtonum("0", 0, 1, NULL) == 0 ? 0 : 1);
       |         ^~~~~~~~
       |         strtouq
-/usr/bin/ld: /tmp/ccUCYm34.o: in function `main':
+/usr/bin/ld: /tmp/ccWWmpPM.o: in function `main':
 conftest.c:(.text+0x24): undefined reference to `strtonum'
 collect2: error: ld returned 1 exit status
 configure:5531: $? = 1
@@ -2521,7 +2521,7 @@ conftest.c:53:9: warning: implicit declaration of function 'recallocarray'; did 
 conftest.c:53:38: warning: comparison between pointer and integer
    53 | return (recallocarray(NULL, 1, 1, 1) == NULL);
       |                                      ^~
-/usr/bin/ld: /tmp/ccDEVf0F.o: in function `main':
+/usr/bin/ld: /tmp/ccMmghio.o: in function `main':
 conftest.c:(.text+0x22): undefined reference to `recallocarray'
 collect2: error: ld returned 1 exit status
 configure:5616: $? = 1
@@ -2613,7 +2613,7 @@ configure:5979: $? = 0
 configure:6019: result: yes
 configure:6605: checking for b64_ntop
 configure:6624: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  >&5
-/usr/bin/ld: /tmp/ccVIOUbP.o: in function `main':
+/usr/bin/ld: /tmp/ccCL3pfT.o: in function `main':
 conftest.c:(.text+0x1d): undefined reference to `__b64_ntop'
 collect2: error: ld returned 1 exit status
 configure:6624: $? = 1
@@ -2802,7 +2802,7 @@ configure:7023: checking for err.h
 configure:7023: result: yes
 configure:7041: checking for library containing imsg_init
 configure:7072: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/ccM7NGXW.o: in function `main':
+/usr/bin/ld: /tmp/ccz3UoOL.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `imsg_init'
 collect2: error: ld returned 1 exit status
 configure:7072: $? = 1
@@ -2875,7 +2875,7 @@ configure: failed program was:
 |   return 0;
 | }
 configure:7072: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -lutil  -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/ccWX2JVY.o: in function `main':
+/usr/bin/ld: /tmp/cctgKw5K.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `imsg_init'
 collect2: error: ld returned 1 exit status
 configure:7072: $? = 1
@@ -2958,7 +2958,7 @@ configure:7127: $? = 0
 configure:7127: result: yes
 configure:7152: checking for stravis
 configure:7152: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/ccr3t4rR.o: in function `main':
+/usr/bin/ld: /tmp/cc1BOhDF.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `stravis'
 collect2: error: ld returned 1 exit status
 configure:7152: $? = 1
@@ -3057,7 +3057,7 @@ configure: failed program was:
 configure:7152: result: no
 configure:7214: checking for library containing fdforkpty
 configure:7245: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/ccJru73T.o: in function `main':
+/usr/bin/ld: /tmp/ccwNTy1J.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `fdforkpty'
 collect2: error: ld returned 1 exit status
 configure:7245: $? = 1
@@ -3131,7 +3131,7 @@ configure: failed program was:
 |   return 0;
 | }
 configure:7245: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -lutil  -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/ccUv8LgR.o: in function `main':
+/usr/bin/ld: /tmp/ccrIE4WI.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `fdforkpty'
 collect2: error: ld returned 1 exit status
 configure:7245: $? = 1
@@ -3207,7 +3207,7 @@ configure: failed program was:
 configure:7262: result: no
 configure:7283: checking for library containing forkpty
 configure:7314: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/cchncjXY.o: in function `main':
+/usr/bin/ld: /tmp/ccMDQwz6.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `forkpty'
 collect2: error: ld returned 1 exit status
 configure:7314: $? = 1
@@ -3285,7 +3285,7 @@ configure:7314: $? = 0
 configure:7331: result: -lutil
 configure:7355: checking for library containing kinfo_getfile
 configure:7386: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -lutil -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/ccxJffFO.o: in function `main':
+/usr/bin/ld: /tmp/cc68I7u4.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `kinfo_getfile'
 collect2: error: ld returned 1 exit status
 configure:7386: $? = 1
@@ -3360,7 +3360,7 @@ configure: failed program was:
 |   return 0;
 | }
 configure:7386: gcc -o conftest  -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -DHAVE_NCURSES_H  conftest.c -lutil  -lutil -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv >&5
-/usr/bin/ld: /tmp/ccaMirmO.o: in function `main':
+/usr/bin/ld: /tmp/ccATayL4.o: in function `main':
 conftest.c:(.text+0xe): undefined reference to `kinfo_getfile'
 collect2: error: ld returned 1 exit status
 configure:7386: $? = 1

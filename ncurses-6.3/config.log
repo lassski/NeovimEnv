@@ -27,7 +27,7 @@ hostinfo               = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
-PATH = /usr/local/rvm/gems/ruby-3.2.2/bin:/usr/local/rvm/gems/ruby-3.2.2@global/bin:/usr/local/rvm/rubies/ruby-3.2.2/bin:/vscode/bin/linux-x64/8b3775030ed1a69b13e4f4c628c612102e30a681/bin/remote-cli:/home/codespace/.local/bin:/home/codespace/.dotnet:/home/codespace/nvm/current/bin:/home/codespace/.php/current/bin:/home/codespace/.python/current/bin:/home/codespace/java/current/bin:/home/codespace/.ruby/current/bin:/home/codespace/.local/bin:/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/oryx:/usr/local/go/bin:/go/bin:/usr/local/sdkman/bin:/usr/local/sdkman/candidates/java/current/bin:/usr/local/sdkman/candidates/gradle/current/bin:/usr/local/sdkman/candidates/maven/current/bin:/usr/local/sdkman/candidates/ant/current/bin:/usr/local/rvm/gems/default/bin:/usr/local/rvm/gems/default@global/bin:/usr/local/rvm/rubies/default/bin:/usr/local/share/rbenv/bin:/usr/local/php/current/bin:/opt/conda/bin:/usr/local/nvs:/usr/local/share/nvm/versions/node/v20.11.0/bin:/usr/local/hugo/bin:/usr/local/dotnet/current:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/rvm/bin:/home/codespace/neovim/binexport:/home/codespace/neovim/bin
+PATH = /home/codespace/.cargo/bin:/usr/local/rvm/gems/ruby-3.2.2/bin:/usr/local/rvm/gems/ruby-3.2.2@global/bin:/usr/local/rvm/rubies/ruby-3.2.2/bin:/vscode/bin/linux-x64/8b3775030ed1a69b13e4f4c628c612102e30a681/bin/remote-cli:/home/codespace/.local/bin:/home/codespace/.dotnet:/home/codespace/nvm/current/bin:/home/codespace/.php/current/bin:/home/codespace/.python/current/bin:/home/codespace/java/current/bin:/home/codespace/.ruby/current/bin:/home/codespace/.local/bin:/usr/local/python/current/bin:/usr/local/py-utils/bin:/usr/local/oryx:/usr/local/go/bin:/go/bin:/usr/local/sdkman/bin:/usr/local/sdkman/candidates/java/current/bin:/usr/local/sdkman/candidates/gradle/current/bin:/usr/local/sdkman/candidates/maven/current/bin:/usr/local/sdkman/candidates/ant/current/bin:/usr/local/rvm/gems/default/bin:/usr/local/rvm/gems/default@global/bin:/usr/local/rvm/rubies/default/bin:/usr/local/share/rbenv/bin:/usr/local/php/current/bin:/opt/conda/bin:/usr/local/nvs:/usr/local/share/nvm/versions/node/v20.11.0/bin:/usr/local/hugo/bin:/usr/local/dotnet/current:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/rvm/bin:/home/codespace/neovim/bin
 
 ## ------------ ##
 ## Core tests.  ##
@@ -43,7 +43,7 @@ configure:1205: found /usr/bin/grep
 configure:1213: result: grep
 configure:1224: checking for egrep
 configure:1280: result: grep -E
-configure:1290: result: Configuring NCURSES 6.3 ABI 6 (Thu Feb  8 23:17:14 UTC 2024)
+configure:1290: result: Configuring NCURSES 6.3 ABI 6 (Fri Feb  9 21:16:41 UTC 2024)
 configure:1294: checking for package version
 configure:1315: result: 6.3
 configure:1318: checking for package patch date
@@ -888,7 +888,7 @@ configure:18652: $? = 0
 configure:18662: result: yes
 configure:18749: checking if -lm needed for math functions
 configure:18772: gcc -o conftest -g -O2 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DNDEBUG  conftest.c  >&5
-/usr/bin/ld: /tmp/ccJRmzIz.o: in function `main':
+/usr/bin/ld: /tmp/cc0qbThO.o: in function `main':
 /workspaces/NeovimEnv/ncurses-6.3/configure:18765: undefined reference to `sin'
 /usr/bin/ld: /workspaces/NeovimEnv/ncurses-6.3/configure:18765: undefined reference to `pow'
 collect2: error: ld returned 1 exit status
@@ -1178,7 +1178,7 @@ configure:21097: $? = 0
 configure:21108: result: yes
 configure:21123: checking if external errno exists
 configure:21145: gcc -o conftest -g -O2 --param max-inline-insns-single=1200 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DNDEBUG  conftest.c  >&5
-/usr/bin/ld: errno: TLS definition in /lib/x86_64-linux-gnu/libc.so.6 section .tbss mismatches non-TLS reference in /tmp/ccHCnB8r.o
+/usr/bin/ld: errno: TLS definition in /lib/x86_64-linux-gnu/libc.so.6 section .tbss mismatches non-TLS reference in /tmp/ccTyn3Ev.o
 /usr/bin/ld: /lib/x86_64-linux-gnu/libc.so.6: error adding symbols: bad value
 collect2: error: ld returned 1 exit status
 configure:21148: $? = 1
@@ -1239,7 +1239,7 @@ configure:21352: $? = 0
 configure:21362: result: yes
 configure:21306: checking for issetugid
 configure:21343: gcc -o conftest -g -O2 --param max-inline-insns-single=1200 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DNDEBUG  conftest.c  >&5
-/usr/bin/ld: /tmp/cc0JuyLl.o: in function `main':
+/usr/bin/ld: /tmp/ccyNbOEt.o: in function `main':
 /workspaces/NeovimEnv/ncurses-6.3/configure:21336: undefined reference to `issetugid'
 collect2: error: ld returned 1 exit status
 configure:21346: $? = 1
@@ -1330,7 +1330,7 @@ configure:21352: $? = 0
 configure:21362: result: yes
 configure:21306: checking for sigvec
 configure:21343: gcc -o conftest -g -O2 --param max-inline-insns-single=1200 -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -DNDEBUG  conftest.c  >&5
-/usr/bin/ld: /tmp/ccz8ZuZw.o: in function `main':
+/usr/bin/ld: /tmp/cck31dbB.o: in function `main':
 /workspaces/NeovimEnv/ncurses-6.3/configure:21336: undefined reference to `sigvec'
 collect2: error: ld returned 1 exit status
 configure:21346: $? = 1
@@ -2123,7 +2123,7 @@ cf_cv_src_modules='ncurses progs panel menu form'
 cf_cv_struct_dirent64='no'
 cf_cv_sys_time_select='yes'
 cf_cv_system_name='linux-gnu'
-cf_cv_timestamp='Thu Feb  8 23:17:14 UTC 2024'
+cf_cv_timestamp='Fri Feb  9 21:16:41 UTC 2024'
 cf_cv_type_of_bool='unsigned char'
 cf_cv_type_sigaction='no'
 cf_cv_typeof_chtype='uint32_t'

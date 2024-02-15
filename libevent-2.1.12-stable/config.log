@@ -27,6 +27,7 @@ uname -v = #18~22.04.1-Ubuntu SMP Tue Nov 21 19:25:02 UTC 2023
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
 
+PATH: /home/codespace/.cargo/bin
 PATH: /usr/local/rvm/gems/ruby-3.2.2/bin
 PATH: /usr/local/rvm/gems/ruby-3.2.2@global/bin
 PATH: /usr/local/rvm/rubies/ruby-3.2.2/bin
@@ -66,7 +67,6 @@ PATH: /usr/bin
 PATH: /sbin
 PATH: /bin
 PATH: /usr/local/rvm/bin
-PATH: /home/codespace/neovim/binexport
 PATH: /home/codespace/neovim/bin
 
 
@@ -690,7 +690,7 @@ configure:9941: checking for zlib.h
 configure:9941: result: yes
 configure:9957: checking for library containing inflateEnd
 configure:9988: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/cctBo8dG.o: in function `main':
+/usr/bin/ld: /tmp/ccOS8Kvx.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:42: undefined reference to `inflateEnd'
 collect2: error: ld returned 1 exit status
 configure:9988: $? = 1
@@ -2035,7 +2035,7 @@ configure:11011: $? = 0
 configure:11011: result: yes
 configure:11011: checking for arc4random
 configure:11011: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/ccuyj71H.o: in function `main':
+/usr/bin/ld: /tmp/ccP6oa8T.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:102: undefined reference to `arc4random'
 collect2: error: ld returned 1 exit status
 configure:11011: $? = 1
@@ -2148,7 +2148,7 @@ configure: failed program was:
 configure:11011: result: no
 configure:11011: checking for arc4random_buf
 configure:11011: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/ccxB3HK5.o: in function `main':
+/usr/bin/ld: /tmp/ccFUJnbe.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:102: undefined reference to `arc4random_buf'
 collect2: error: ld returned 1 exit status
 configure:11011: $? = 1
@@ -2261,7 +2261,7 @@ configure: failed program was:
 configure:11011: result: no
 configure:11011: checking for arc4random_addrandom
 configure:11011: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/ccTjDHnr.o: in function `main':
+/usr/bin/ld: /tmp/ccpDaVwz.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:102: undefined reference to `arc4random_addrandom'
 collect2: error: ld returned 1 exit status
 configure:11011: $? = 1
@@ -2402,7 +2402,7 @@ configure:11011: $? = 0
 configure:11011: result: yes
 configure:11011: checking for issetugid
 configure:11011: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/ccwwiGne.o: in function `main':
+/usr/bin/ld: /tmp/ccGaVd2x.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:109: undefined reference to `issetugid'
 collect2: error: ld returned 1 exit status
 configure:11011: $? = 1
@@ -2522,7 +2522,7 @@ configure: failed program was:
 configure:11011: result: no
 configure:11011: checking for mach_absolute_time
 configure:11011: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/ccLqTmpA.o: in function `main':
+/usr/bin/ld: /tmp/cc4Xc5hV.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:109: undefined reference to `mach_absolute_time'
 collect2: error: ld returned 1 exit status
 configure:11011: $? = 1
@@ -2686,7 +2686,7 @@ configure:11011: $? = 0
 configure:11011: result: yes
 configure:11011: checking for strlcpy
 configure:11011: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/ccMwi7wc.o: in function `main':
+/usr/bin/ld: /tmp/cc0S7zRW.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:120: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:11011: $? = 1
@@ -2899,7 +2899,7 @@ configure:11563: $? = 0
 configure:11563: result: yes
 configure:11654: checking for port_create
 configure:11654: gcc -o conftest -g -O2 -Wall -fno-strict-aliasing   conftest.c  >&5
-/usr/bin/ld: /tmp/cc9euXDK.o: in function `main':
+/usr/bin/ld: /tmp/ccZqsgrj.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:141: undefined reference to `port_create'
 collect2: error: ld returned 1 exit status
 configure:11654: $? = 1
@@ -6813,7 +6813,7 @@ conftest.c:139:22: warning: null argument where non-null required (argument 3) [
 conftest.c:137:15: warning: 'th' is used uninitialized in this function [-Wuninitialized]
   137 | pthread_t th; pthread_join(th, 0);
       |               ^~~~~~~~~~~~~~~~~~~
-/usr/bin/ld: /tmp/ccEo6kXR.o: in function `main':
+/usr/bin/ld: /tmp/ccQdl1Gl.o: in function `main':
 /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:137: undefined reference to `pthread_join'
 /usr/bin/ld: /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:138: undefined reference to `__pthread_register_cancel'
 /usr/bin/ld: /workspaces/NeovimEnv/libevent-2.1.12-stable/conftest.c:139: undefined reference to `pthread_create'
