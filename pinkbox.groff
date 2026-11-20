@@ -8,3 +8,8 @@
 
 .PINK_BOX
 .PINK_BOX OFF
+
+.QUOTE_CENTER
+.QUOTE
+Tuija pitaa klemmarilla viivaa.
+.QUOTE OFF
