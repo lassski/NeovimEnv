@@ -435,7 +435,7 @@ ac_pwd='/workspaces/NeovimEnv/tmux-3.3a'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
-AWK='gawk'
+AWK='mawk'
 test -n "$AWK" || AWK=awk
 # The default lists apply if the user does not specify any file.
 ac_need_defaults=:
@@ -597,13 +597,12 @@ echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
 cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
 S["am__EXEEXT_FALSE"]=""
 S["am__EXEEXT_TRUE"]="#"
-S["LTLIBOBJS"]=" ${LIBOBJDIR}closefrom$U.lo ${LIBOBJDIR}fgetln$U.lo ${LIBOBJDIR}freezero$U.lo ${LIBOBJDIR}getdtablecount$U.lo ${LIBOBJDIR}getpeereid$U.lo ${LIBOBJDI"\
-"R}getprogname$U.lo ${LIBOBJDIR}setproctitle$U.lo ${LIBOBJDIR}strlcat$U.lo ${LIBOBJDIR}strlcpy$U.lo ${LIBOBJDIR}strtonum$U.lo ${LIBOBJDIR}recallocarr"\
-"ay$U.lo ${LIBOBJDIR}getopt$U.lo ${LIBOBJDIR}imsg$U.lo ${LIBOBJDIR}imsg-buffer$U.lo ${LIBOBJDIR}vis$U.lo ${LIBOBJDIR}unvis$U.lo ${LIBOBJDIR}fdforkpty"\
-"$U.lo"
+S["LTLIBOBJS"]=" ${LIBOBJDIR}fgetln$U.lo ${LIBOBJDIR}freezero$U.lo ${LIBOBJDIR}getdtablecount$U.lo ${LIBOBJDIR}getpeereid$U.lo ${LIBOBJDIR}getprogname$U.lo ${LIBOBJ"\
+"DIR}setproctitle$U.lo ${LIBOBJDIR}strtonum$U.lo ${LIBOBJDIR}recallocarray$U.lo ${LIBOBJDIR}getopt$U.lo ${LIBOBJDIR}imsg$U.lo ${LIBOBJDIR}imsg-buffer"\
+"$U.lo ${LIBOBJDIR}vis$U.lo ${LIBOBJDIR}unvis$U.lo ${LIBOBJDIR}fdforkpty$U.lo"
 S["AM_LDFLAGS"]=""
 S["AM_CFLAGS"]=""
-S["AM_CPPFLAGS"]="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include -I/home/codespace/.local/include "
+S["AM_CPPFLAGS"]="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -I/home/codespace/.local/include  "
 S["IS_UNKNOWN_FALSE"]=""
 S["IS_UNKNOWN_TRUE"]="#"
 S["IS_HAIKU_FALSE"]=""
@@ -642,15 +641,15 @@ S["LIBNCURSESW_LIBS"]=""
 S["LIBNCURSESW_CFLAGS"]=""
 S["LIBNCURSES_LIBS"]=""
 S["LIBNCURSES_CFLAGS"]=""
-S["LIBTINFO_LIBS"]="-L/home/codespace/.local/lib -ltinfo"
-S["LIBTINFO_CFLAGS"]="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include"
+S["LIBTINFO_LIBS"]="-L/home/codespace/.local/lib -ltinfo "
+S["LIBTINFO_CFLAGS"]="-D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include "
 S["LIBEVENT_LIBS"]=""
 S["LIBEVENT_CFLAGS"]=""
-S["LIBEVENT_CORE_LIBS"]="-L/home/codespace/.local/lib -levent_core"
-S["LIBEVENT_CORE_CFLAGS"]="-I/home/codespace/.local/include"
-S["LIBOBJS"]=" ${LIBOBJDIR}closefrom$U.o ${LIBOBJDIR}fgetln$U.o ${LIBOBJDIR}freezero$U.o ${LIBOBJDIR}getdtablecount$U.o ${LIBOBJDIR}getpeereid$U.o ${LIBOBJDIR}get"\
-"progname$U.o ${LIBOBJDIR}setproctitle$U.o ${LIBOBJDIR}strlcat$U.o ${LIBOBJDIR}strlcpy$U.o ${LIBOBJDIR}strtonum$U.o ${LIBOBJDIR}recallocarray$U.o ${L"\
-"IBOBJDIR}getopt$U.o ${LIBOBJDIR}imsg$U.o ${LIBOBJDIR}imsg-buffer$U.o ${LIBOBJDIR}vis$U.o ${LIBOBJDIR}unvis$U.o ${LIBOBJDIR}fdforkpty$U.o"
+S["LIBEVENT_CORE_LIBS"]="-L/home/codespace/.local/lib -levent_core "
+S["LIBEVENT_CORE_CFLAGS"]="-I/home/codespace/.local/include "
+S["LIBOBJS"]=" ${LIBOBJDIR}fgetln$U.o ${LIBOBJDIR}freezero$U.o ${LIBOBJDIR}getdtablecount$U.o ${LIBOBJDIR}getpeereid$U.o ${LIBOBJDIR}getprogname$U.o ${LIBOBJDIR}s"\
+"etproctitle$U.o ${LIBOBJDIR}strtonum$U.o ${LIBOBJDIR}recallocarray$U.o ${LIBOBJDIR}getopt$U.o ${LIBOBJDIR}imsg$U.o ${LIBOBJDIR}imsg-buffer$U.o ${LIB"\
+"OBJDIR}vis$U.o ${LIBOBJDIR}unvis$U.o ${LIBOBJDIR}fdforkpty$U.o"
 S["IS_SUNCC_FALSE"]=""
 S["IS_SUNCC_TRUE"]="#"
 S["IS_GCC_FALSE"]="#"
@@ -702,7 +701,7 @@ S["am__tar"]="$${TAR-tar} chof - \"$$tardir\""
 S["AMTAR"]="$${TAR-tar}"
 S["am__leading_dot"]="."
 S["SET_MAKE"]=""
-S["AWK"]="gawk"
+S["AWK"]="mawk"
 S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/usr/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
@@ -723,7 +722,7 @@ S["INSTALL_PROGRAM"]="${INSTALL}"
 S["target_alias"]=""
 S["host_alias"]=""
 S["build_alias"]=""
-S["LIBS"]="-lutil -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv"
+S["LIBS"]="-L/home/codespace/.local/lib -ltinfo  -L/home/codespace/.local/lib -levent_core  -lm  -lresolv"
 S["ECHO_T"]=""
 S["ECHO_N"]="-n"
 S["ECHO_C"]=""
@@ -732,9 +731,9 @@ S["DEFS"]="-DPACKAGE_NAME=\\\"tmux\\\" -DPACKAGE_TARNAME=\\\"tmux\\\" -DPACKAGE_
 "ORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -D__EXTENSIONS__=1 -D_ALL_SOURCE=1 -D_GNU_SOURCE=1 -D_POSIX_PTHRE"\
 "AD_SEMANTICS=1 -D_TANDEM_SOURCE=1 -DHAVE_DIRENT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_PATHS_H=1 -DHAVE_PTY_H=1 -DHAVE_STDINT_H=1 -DHAVE_SY"\
 "S_DIR_H=1 -DHAVE_LIBM=1 -DHAVE_DIRFD=1 -DHAVE_FLOCK=1 -DHAVE_PRCTL=1 -DHAVE_SYSCONF=1 -DHAVE_ASPRINTF=1 -DHAVE_CFMAKERAW=1 -DHAVE_CLOCK_GETTIME=1 -D"\
-"HAVE_EXPLICIT_BZERO=1 -DHAVE_GETDTABLESIZE=1 -DHAVE_GETLINE=1 -DHAVE_MEMMEM=1 -DHAVE_SETENV=1 -DHAVE_STRCASESTR=1 -DHAVE_STRNDUP=1 -DHAVE_STRSEP=1 -"\
-"DHAVE_EVENT2_EVENT_H=1 -DHAVE_NCURSES_H=1 -DHAVE_B64_NTOP=1 -DHAVE_MALLOC_TRIM=1 -DHAVE_DAEMON=1 -DHAVE_FORKPTY=1 -DHAVE___PROGNAME=1 -DHAVE_PROGRAM"\
-"_INVOCATION_SHORT_NAME=1 -DHAVE_PR_SET_NAME=1 -DHAVE_SO_PEERCRED=1 -DHAVE_PROC_PID=1"
+"HAVE_CLOSEFROM=1 -DHAVE_EXPLICIT_BZERO=1 -DHAVE_GETDTABLESIZE=1 -DHAVE_GETLINE=1 -DHAVE_MEMMEM=1 -DHAVE_SETENV=1 -DHAVE_STRCASESTR=1 -DHAVE_STRLCAT="\
+"1 -DHAVE_STRLCPY=1 -DHAVE_STRNDUP=1 -DHAVE_STRSEP=1 -DHAVE_EVENT2_EVENT_H=1 -DHAVE_NCURSES_H=1 -DHAVE_B64_NTOP=1 -DHAVE_MALLOC_TRIM=1 -DHAVE_DAEMON="\
+"1 -DHAVE_FORKPTY=1 -DHAVE___PROGNAME=1 -DHAVE_PROGRAM_INVOCATION_SHORT_NAME=1 -DHAVE_PR_SET_NAME=1 -DHAVE_SO_PEERCRED=1 -DHAVE_PROC_PID=1"
 S["mandir"]="${datarootdir}/man"
 S["localedir"]="${datarootdir}/locale"
 S["libdir"]="${exec_prefix}/lib"

@@ -113,13 +113,6 @@ fi
 		nroff -man $TMP >$TMP.out
 		mv $TMP.out $TMP
 	fi
-	if test "$verb" = installing ; then
-	if ( "gzip" -f $TMP )
-	then
-		mv $TMP.gz $TMP
-	fi
-	fi
-	cf_target="$cf_target.gz"
 	suffix=`basename "$cf_target" | sed -e 's%^[^.]*%%'`
 	if test "$verb" = installing ; then
 		echo "$verb $cf_target"
@@ -128,7 +121,7 @@ fi
 		test -n "$aliases" && (
 			cd "$cf_subdir${section}" && (
 				cf_source=`echo "$cf_target" |sed -e 's%^.*/\([^/][^/]*/[^/][^/]*$\)%\1%'`
-				test -n "gz" && cf_source=`echo "$cf_source" |sed -e 's%\.gz$%%'`
+				test -n "" && cf_source=`echo "$cf_source" |sed -e 's%\.$%%'`
 				cf_target=`basename "$cf_target"`
 				for cf_alias in $aliases
 				do
@@ -147,10 +140,6 @@ fi
 						ln -s -f "$cf_target" "$cf_alias${suffix}"
 					elif test "$cf_target" != "$cf_alias${suffix}" ; then
 						echo ".so $cf_source" >$TMP
-						if test -n "gz" ; then
-							"gzip" -f $TMP
-							mv $TMP.gz $TMP
-						fi
 						echo ".. $verb alias $cf_alias${suffix}"
 						rm -f "$cf_alias${suffix}"
 						$INSTALL_DATA $TMP "$cf_alias${suffix}"

@@ -14,7 +14,7 @@ library_names='libevent_openssl-2.1.so.7.0.1 libevent_openssl-2.1.so.7 libevent_
 old_library='libevent_openssl.a'
 
 # Linker flags that cannot go in dependency_libs.
-inherited_linker_flags=' -pthread'
+inherited_linker_flags=''
 
 # Libraries that this one depends upon.
 dependency_libs=' -lssl -lcrypto'

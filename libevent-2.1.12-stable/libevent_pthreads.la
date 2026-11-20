@@ -14,7 +14,7 @@ library_names='libevent_pthreads-2.1.so.7.0.1 libevent_pthreads-2.1.so.7 libeven
 old_library='libevent_pthreads.a'
 
 # Linker flags that cannot go in dependency_libs.
-inherited_linker_flags=' -pthread'
+inherited_linker_flags=''
 
 # Libraries that this one depends upon.
 dependency_libs=''

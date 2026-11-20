@@ -339,7 +339,7 @@ AM_CFLAGS =  $(am__append_1) $(am__append_2) \
 	$(am__append_3) $(am__append_8)
 
 # Preprocessor flags.
-AM_CPPFLAGS = -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include -I/home/codespace/.local/include   \
+AM_CPPFLAGS = -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include  -I/home/codespace/.local/include    \
 	-DTMUX_VERSION='"3.3a"' \
 	-DTMUX_CONF='"$(sysconfdir)/tmux.conf:~/.tmux.conf:$$XDG_CONFIG_HOME/tmux/tmux.conf:~/.config/tmux/tmux.conf"' \
 	-DTMUX_TERM='"tmux-256color"' $(am__append_4) $(am__append_5) \
@@ -350,7 +350,7 @@ AM_LDFLAGS =
 AUTOCONF = ${SHELL} /workspaces/NeovimEnv/tmux-3.3a/etc/missing autoconf
 AUTOHEADER = ${SHELL} /workspaces/NeovimEnv/tmux-3.3a/etc/missing autoheader
 AUTOMAKE = ${SHELL} /workspaces/NeovimEnv/tmux-3.3a/etc/missing automake-1.15
-AWK = gawk
+AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = 
@@ -358,7 +358,7 @@ CPP = gcc -E
 CPPFLAGS = 
 CYGPATH_W = echo
 DEFAULT_TERM = tmux-256color
-DEFS = -DPACKAGE_NAME=\"tmux\" -DPACKAGE_TARNAME=\"tmux\" -DPACKAGE_VERSION=\"3.3a\" -DPACKAGE_STRING=\"tmux\ 3.3a\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"tmux\" -DVERSION=\"3.3a\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -D__EXTENSIONS__=1 -D_ALL_SOURCE=1 -D_GNU_SOURCE=1 -D_POSIX_PTHREAD_SEMANTICS=1 -D_TANDEM_SOURCE=1 -DHAVE_DIRENT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_PATHS_H=1 -DHAVE_PTY_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_DIR_H=1 -DHAVE_LIBM=1 -DHAVE_DIRFD=1 -DHAVE_FLOCK=1 -DHAVE_PRCTL=1 -DHAVE_SYSCONF=1 -DHAVE_ASPRINTF=1 -DHAVE_CFMAKERAW=1 -DHAVE_CLOCK_GETTIME=1 -DHAVE_EXPLICIT_BZERO=1 -DHAVE_GETDTABLESIZE=1 -DHAVE_GETLINE=1 -DHAVE_MEMMEM=1 -DHAVE_SETENV=1 -DHAVE_STRCASESTR=1 -DHAVE_STRNDUP=1 -DHAVE_STRSEP=1 -DHAVE_EVENT2_EVENT_H=1 -DHAVE_NCURSES_H=1 -DHAVE_B64_NTOP=1 -DHAVE_MALLOC_TRIM=1 -DHAVE_DAEMON=1 -DHAVE_FORKPTY=1 -DHAVE___PROGNAME=1 -DHAVE_PROGRAM_INVOCATION_SHORT_NAME=1 -DHAVE_PR_SET_NAME=1 -DHAVE_SO_PEERCRED=1 -DHAVE_PROC_PID=1
+DEFS = -DPACKAGE_NAME=\"tmux\" -DPACKAGE_TARNAME=\"tmux\" -DPACKAGE_VERSION=\"3.3a\" -DPACKAGE_STRING=\"tmux\ 3.3a\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"tmux\" -DVERSION=\"3.3a\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -D__EXTENSIONS__=1 -D_ALL_SOURCE=1 -D_GNU_SOURCE=1 -D_POSIX_PTHREAD_SEMANTICS=1 -D_TANDEM_SOURCE=1 -DHAVE_DIRENT_H=1 -DHAVE_FCNTL_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_PATHS_H=1 -DHAVE_PTY_H=1 -DHAVE_STDINT_H=1 -DHAVE_SYS_DIR_H=1 -DHAVE_LIBM=1 -DHAVE_DIRFD=1 -DHAVE_FLOCK=1 -DHAVE_PRCTL=1 -DHAVE_SYSCONF=1 -DHAVE_ASPRINTF=1 -DHAVE_CFMAKERAW=1 -DHAVE_CLOCK_GETTIME=1 -DHAVE_CLOSEFROM=1 -DHAVE_EXPLICIT_BZERO=1 -DHAVE_GETDTABLESIZE=1 -DHAVE_GETLINE=1 -DHAVE_MEMMEM=1 -DHAVE_SETENV=1 -DHAVE_STRCASESTR=1 -DHAVE_STRLCAT=1 -DHAVE_STRLCPY=1 -DHAVE_STRNDUP=1 -DHAVE_STRSEP=1 -DHAVE_EVENT2_EVENT_H=1 -DHAVE_NCURSES_H=1 -DHAVE_B64_NTOP=1 -DHAVE_MALLOC_TRIM=1 -DHAVE_DAEMON=1 -DHAVE_FORKPTY=1 -DHAVE___PROGNAME=1 -DHAVE_PROGRAM_INVOCATION_SHORT_NAME=1 -DHAVE_PR_SET_NAME=1 -DHAVE_SO_PEERCRED=1 -DHAVE_PROC_PID=1
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
@@ -374,18 +374,18 @@ INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
 LDFLAGS = 
 LIBEVENT_CFLAGS = 
-LIBEVENT_CORE_CFLAGS = -I/home/codespace/.local/include
-LIBEVENT_CORE_LIBS = -L/home/codespace/.local/lib -levent_core
+LIBEVENT_CORE_CFLAGS = -I/home/codespace/.local/include 
+LIBEVENT_CORE_LIBS = -L/home/codespace/.local/lib -levent_core 
 LIBEVENT_LIBS = 
 LIBNCURSESW_CFLAGS = 
 LIBNCURSESW_LIBS = 
 LIBNCURSES_CFLAGS = 
 LIBNCURSES_LIBS = 
-LIBOBJS =  ${LIBOBJDIR}closefrom$U.o ${LIBOBJDIR}fgetln$U.o ${LIBOBJDIR}freezero$U.o ${LIBOBJDIR}getdtablecount$U.o ${LIBOBJDIR}getpeereid$U.o ${LIBOBJDIR}getprogname$U.o ${LIBOBJDIR}setproctitle$U.o ${LIBOBJDIR}strlcat$U.o ${LIBOBJDIR}strlcpy$U.o ${LIBOBJDIR}strtonum$U.o ${LIBOBJDIR}recallocarray$U.o ${LIBOBJDIR}getopt$U.o ${LIBOBJDIR}imsg$U.o ${LIBOBJDIR}imsg-buffer$U.o ${LIBOBJDIR}vis$U.o ${LIBOBJDIR}unvis$U.o ${LIBOBJDIR}fdforkpty$U.o
-LIBS = -lutil -L/home/codespace/.local/lib -ltinfo -L/home/codespace/.local/lib -levent_core -lm  -lresolv
-LIBTINFO_CFLAGS = -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include
-LIBTINFO_LIBS = -L/home/codespace/.local/lib -ltinfo
-LTLIBOBJS =  ${LIBOBJDIR}closefrom$U.lo ${LIBOBJDIR}fgetln$U.lo ${LIBOBJDIR}freezero$U.lo ${LIBOBJDIR}getdtablecount$U.lo ${LIBOBJDIR}getpeereid$U.lo ${LIBOBJDIR}getprogname$U.lo ${LIBOBJDIR}setproctitle$U.lo ${LIBOBJDIR}strlcat$U.lo ${LIBOBJDIR}strlcpy$U.lo ${LIBOBJDIR}strtonum$U.lo ${LIBOBJDIR}recallocarray$U.lo ${LIBOBJDIR}getopt$U.lo ${LIBOBJDIR}imsg$U.lo ${LIBOBJDIR}imsg-buffer$U.lo ${LIBOBJDIR}vis$U.lo ${LIBOBJDIR}unvis$U.lo ${LIBOBJDIR}fdforkpty$U.lo
+LIBOBJS =  ${LIBOBJDIR}fgetln$U.o ${LIBOBJDIR}freezero$U.o ${LIBOBJDIR}getdtablecount$U.o ${LIBOBJDIR}getpeereid$U.o ${LIBOBJDIR}getprogname$U.o ${LIBOBJDIR}setproctitle$U.o ${LIBOBJDIR}strtonum$U.o ${LIBOBJDIR}recallocarray$U.o ${LIBOBJDIR}getopt$U.o ${LIBOBJDIR}imsg$U.o ${LIBOBJDIR}imsg-buffer$U.o ${LIBOBJDIR}vis$U.o ${LIBOBJDIR}unvis$U.o ${LIBOBJDIR}fdforkpty$U.o
+LIBS = -L/home/codespace/.local/lib -ltinfo  -L/home/codespace/.local/lib -levent_core  -lm  -lresolv
+LIBTINFO_CFLAGS = -D_DEFAULT_SOURCE -D_XOPEN_SOURCE=600 -I/home/codespace/.local/include/ncurses -I/home/codespace/.local/include 
+LIBTINFO_LIBS = -L/home/codespace/.local/lib -ltinfo 
+LTLIBOBJS =  ${LIBOBJDIR}fgetln$U.lo ${LIBOBJDIR}freezero$U.lo ${LIBOBJDIR}getdtablecount$U.lo ${LIBOBJDIR}getpeereid$U.lo ${LIBOBJDIR}getprogname$U.lo ${LIBOBJDIR}setproctitle$U.lo ${LIBOBJDIR}strtonum$U.lo ${LIBOBJDIR}recallocarray$U.lo ${LIBOBJDIR}getopt$U.lo ${LIBOBJDIR}imsg$U.lo ${LIBOBJDIR}imsg-buffer$U.lo ${LIBOBJDIR}vis$U.lo ${LIBOBJDIR}unvis$U.lo ${LIBOBJDIR}fdforkpty$U.lo
 MAKEINFO = ${SHELL} /workspaces/NeovimEnv/tmux-3.3a/etc/missing makeinfo
 MANFORMAT = mdoc
 MKDIR_P = /usr/bin/mkdir -p

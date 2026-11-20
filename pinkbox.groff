@@ -1,0 +1,10 @@
+.de PINK_BOX
+.BOX \
+  SHADED pink \
+  OUTLINED darkred \
+  WEIGHT 1p \
+  INSET 9p
+..
+
+.PINK_BOX
+.PINK_BOX OFF
