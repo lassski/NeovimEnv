@@ -10,7 +10,7 @@ local command = "cd "
 	.. " --enable-shared"
 	.. " && "
 	.. "make && make install"
-os.execute(command)
+execute(command)
 
 command = "cd "
 	.. ncursesPath
@@ -21,7 +21,7 @@ command = "cd "
 	.. localPkgConfigPath
 	.. " && "
 	.. "make && make install"
-os.execute(command)
+execute(command)
 
 command = "cd "
 	.. tmuxPath
@@ -32,7 +32,7 @@ command = "cd "
 	.. localInstallPath
 	.. " && "
 	.. "make && make install"
-os.execute(command)
+execute(command)
 
 -- Fonts
 command = "mkdir -p "
@@ -45,7 +45,7 @@ command = "mkdir -p "
 	.. " && "
 	.. "fc-cache"
 
-os.execute(command)
+execute(command)
 
 -- Määritellään muuttujia polkujen ja git-repon kanssa
 local repoURL = "https://github.com/neovim/neovim"
@@ -53,7 +53,7 @@ local cloneDirectory = "neovim"
 
 local cloneExists = isdir(cloneDirectory)
 if not cloneExists then
-	os.execute("git clone " .. repoURL .. " " .. cloneDirectory)
+	execute("git clone " .. repoURL .. " " .. cloneDirectory)
 else
 	print("neovim git clone exists so we don't have download it.")
 end
@@ -71,13 +71,12 @@ command = "rm -rf "
 	.. "&& make install"
 
 -- Suorita komento
-os.execute(command)
+execute(command)
 
 -- Luodaan nvimsetup.sh ja kirjoitetaan sinne PATHin päivityskomento
 local nvimSetupFile = io.open(nvimSetupPath, "w") -- "w" avaa tiedoston kirjoitusta varten, olettaen sen luomista
 if nvimSetupFile then
 	nvimSetupFile:write("export PATH=$PATH:" .. pathExtension .. "\n")
-	nvimSetupFile:write("export LD_LIBRARY_PATH=" .. ldLibPath .. ":$LD_LIBRARY_PATH")
 	nvimSetupFile:close()
 else
 	print("Tiedoston luonti epäonnistui: " .. nvimSetupPath)
@@ -123,16 +122,16 @@ end
 --            "mkdir " .. nvimConfigPath .. " && " ..
 --            "cp " .. nvimInitFile .. " " .. nvimConfigPath
 command = "rm -rf " .. nvimConfigPath .. " && " .. "cp -r " .. "starter/. " .. nvimConfigPath
-os.execute(command)
+execute(command)
 
 command = "cp " .. tmuxConfigFilePath .. " " .. home
-os.execute(command)
+execute(command)
 
 -- Muutetaan nvimsetup.sh-tiedoston käyttöoikeuksia
-os.execute("chmod a+rwx " .. nvimSetupPath)
+execute("chmod 644 " .. nvimSetupPath)
 
 -- Install rust
-os.execute("curl https://sh.rustup.rs -sSf | sh")
+execute("curl https://sh.rustup.rs -sSf | sh")
 
 -- Päivittämään PATH ympäristömuuttujan nykyisessä Lua-prosessissa,
 -- mutta tämä muutos ei ole pysyvä yli suorituskertojen
