@@ -1,55 +1,7 @@
 require("variables")
+local helpers = require("helpers")
 
--- Quote shell arguments safely
-local function shellQuote(value)
-    return "'" .. tostring(value):gsub("'", "'\\''") .. "'"
-end
-
--- Remove files and directories
-local function remove(path)
-    if not path or path == "" then
-        return
-    end
-
-    local command = "rm -rf -- " .. shellQuote(path)
-    local success, reason, code = os.execute(command)
-
-    if success ~= true and success ~= 0 then
-        print("Failed to remove: " .. path)
-        print(reason, code)
-    end
-end
-
--- Remove directories matching a wildcard pattern
-local function removePattern(pattern)
-    if not pattern or pattern == "" then
-        return
-    end
-
-    local parent, name = pattern:match("^(.*)/([^/]*)$")
-
-    if not name then
-        parent = "."
-        name = pattern
-    end
-
-    local command = "find "
-        .. shellQuote(parent)
-        .. " -mindepth 1 -maxdepth 1"
-        .. " -type d"
-        .. " -name "
-        .. shellQuote(name)
-        .. " -exec rm -rf -- {} +"
-
-    local success, reason, code = os.execute(command)
-
-    if success ~= true and success ~= 0 then
-        print("Failed to remove directories matching: " .. pattern)
-        print(reason, code)
-    end
-end
-
--- Remove a complete source line from a file
+-- Remove Neovim environment setup from .bashrc
 local function removeLine(filePath, targetLine)
     local file = io.open(filePath, "r")
 
@@ -70,32 +22,34 @@ local function removeLine(filePath, targetLine)
     file = io.open(filePath, "w")
 
     if not file then
-        print("Could not modify: " .. filePath)
-        return
+        error("Could not modify: " .. filePath)
     end
 
     file:write(table.concat(lines, "\n"), "\n")
     file:close()
 end
 
--- Uninstall Neovim
-remove(installPrefix)
-remove("./neovim") -- Git clone
-remove(nvimSetupPath)
-remove(nvimConfigPath)
-remove(localSharePath)
+-- Uninstall tmux and its dependencies
+helpers.removeManifest("tmux", localInstallPath)
+helpers.removeManifest("ncurses", localInstallPath)
+helpers.removeManifest("libevent", localInstallPath)
 
+-- Uninstall Neovim
+helpers.removeManifest("neovim", installPrefix)
+
+-- Remove Neovim configuration
+-- Comment this out if you want to preserve your configuration
+-- os.execute("rm -rf -- '" .. nvimConfigPath .. "'")
+
+-- Remove Neovim environment setup
 removeLine(bashrcPath, ". " .. nvimSetupPath)
 
--- Uninstall fonts
--- remove(fontsPathDest)
+os.remove(nvimSetupPath)
 
--- Uninstall libevent
-removePattern(libEventPath)
+-- Remove tmux configuration
+-- Comment this out if you want to preserve your configuration
+-- os.remove(tmuxInstalledConfigFilePath)
 
--- Uninstall ncurses
-removePattern(ncursesPath)
-
--- Uninstall tmux
-removePattern(tmuxPath)
-remove(tmuxInstalledConfigFilePath)
+print("****************** UNINSTALL COMPLETE ************************")
+print("* Neovim, tmux, ncurses and libevent have been removed.      *")
+print("***************************************************************")

@@ -16,6 +16,7 @@ for i, path in ipairs(paths) do
     end
 
     paths[i] = foundPath
+    print("Found source directory: " .. foundPath)
 end
 
 libEventPath = paths[1]
@@ -23,37 +24,42 @@ ncursesPath = paths[2]
 tmuxPath = paths[3]
 
 -- TMUX and prerequisites
-local command = "cd "
-	.. libEventPath
-	.. " && "
-	.. "./configure --prefix="
-	.. localInstallPath
-	.. " --enable-shared"
-	.. " && "
-	.. "make && make install"
-helpers.execute(command)
+local command =
+    "cd " .. libEventPath ..
+    " && ./configure --prefix=" .. localInstallPath ..
+    " --enable-shared" ..
+    " && make"
 
-command = "cd "
-	.. ncursesPath
-	.. " && "
-	.. "./configure --prefix="
-	.. localInstallPath
-	.. " --with-shared --with-termlib --enable-pc-files --with-pkg-config-libdir="
-	.. localPkgConfigPath
-	.. " && "
-	.. "make && make install"
-helpers.execute(command)
+helpers.installStaged(
+    "libevent",
+    localInstallPath,
+    command
+)
 
-command = "cd "
-	.. tmuxPath
-	.. " && "
-	.. "PKG_CONFIG_PATH="
-	.. localPkgConfigPath
-	.. " ./configure --prefix="
-	.. localInstallPath
-	.. " && "
-	.. "make && make install"
-helpers.execute(command)
+command =
+    "cd " .. ncursesPath ..
+    " && ./configure --prefix=" .. localInstallPath ..
+    " --with-shared --with-termlib --enable-pc-files" ..
+    " --with-pkg-config-libdir=" .. localPkgConfigPath ..
+    " && make"
+
+helpers.installStaged(
+    "ncurses",
+    localInstallPath,
+    command
+)
+
+command =
+    "cd " .. tmuxPath ..
+    " && PKG_CONFIG_PATH=" .. localPkgConfigPath ..
+    " ./configure --prefix=" .. localInstallPath ..
+    " && make"
+
+helpers.installStaged(
+    "tmux",
+    localInstallPath,
+    command
+)
 
 -- Fonts
 command = "mkdir -p "
@@ -70,7 +76,7 @@ helpers.execute(command)
 
 -- Määritellään muuttujia polkujen ja git-repon kanssa
 local repoURL = "https://github.com/neovim/neovim"
-local cloneDirectory = "neovim"
+local cloneDirectory = "./neovim-src"
 
 local cloneExists = helpers.isdir(cloneDirectory)
 if not cloneExists then
@@ -79,20 +85,17 @@ else
 	print("neovim git clone exists so we don't have download it.")
 end
 
--- Rakenna yksi komento, joka kloonaa repon, siivoaa tarvittaessa ja suorittaa rakennusprosessin
-command = "rm -rf "
-	.. cloneDirectory
-	.. "/build/ && " -- Suoraan poistaminen, `rm -rf` estää virheitä, jos kansiota ei ole
-	.. "cd "
-	.. cloneDirectory
-	.. " && " -- 'cd' tässä kohdassa ei aiheuta ongelmaa, koska kaikki on yhden komennon sisällä
-	.. 'make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX='
-	.. installPrefix
-	.. '" '
-	.. "&& make install"
+command =
+    "cd " .. cloneDirectory ..
+    " && make CMAKE_BUILD_TYPE=RelWithDebInfo" ..
+    ' CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=' ..
+    installPrefix .. '"' 
 
--- Suorita komento
-helpers.execute(command)
+helpers.installStaged(
+    "neovim",
+    installPrefix,
+    command
+)
 
 -- Luodaan nvimsetup.sh ja kirjoitetaan sinne PATHin päivityskomento
 local nvimSetupFile = io.open(nvimSetupPath, "w") -- "w" avaa tiedoston kirjoitusta varten, olettaen sen luomista
@@ -109,17 +112,51 @@ end
 
 local lineToAdd = ". " .. nvimSetupPath
 
--- Luetaan .bashrc-tiedoston sisältö
+-- Create .bashrc if it doesn't exist
+local file = io.open(bashrcPath, "a")
+
+if not file then
+    error("Could not create or open: " .. bashrcPath)
+end
+
+file:close()
+
+-- Read .bashrc contents
 local contents = {}
-local file = io.open(bashrcPath, "r") -- Avataan tiedosto lukemista varten
-if file then
-	for line in file:lines() do
-		table.insert(contents, line)
-	end
-	file:close()
-else
-	print("Tiedoston avaaminen epäonnistui: " .. bashrcPath)
-	return
+
+file = io.open(bashrcPath, "r")
+
+if not file then
+    error("Could not read: " .. bashrcPath)
+end
+
+for line in file:lines() do
+    table.insert(contents, line)
+end
+
+file:close()
+
+-- Check if setup line already exists
+local lineToAdd = ". " .. nvimSetupPath
+local lineExists = false
+
+for _, line in ipairs(contents) do
+    if line == lineToAdd then
+        lineExists = true
+        break
+    end
+end
+
+-- Add setup line if missing
+if not lineExists then
+    file = io.open(bashrcPath, "a")
+
+    if not file then
+        error("Could not modify: " .. bashrcPath)
+    end
+
+    file:write("\n" .. lineToAdd .. "\n")
+    file:close()
 end
 
 -- Tarkistetaan, sisältääkö sisältö jo kyseisen rivin
@@ -156,7 +193,7 @@ helpers.execute(command)
 helpers.execute("chmod 644 " .. nvimSetupPath)
 
 -- Install rust
-helpers.execute("curl https://sh.rustup.rs -sSf | sh")
+--helpers.execute("curl https://sh.rustup.rs -sSf | sh")
 
 -- Päivittämään PATH ympäristömuuttujan nykyisessä Lua-prosessissa,
 -- mutta tämä muutos ei ole pysyvä yli suorituskertojen

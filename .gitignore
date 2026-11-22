@@ -1,5 +1,6 @@
 lua-*/
 neovim/
+neovim-src/
 libevent-*/
 ncurses-*/
 tmux-*/

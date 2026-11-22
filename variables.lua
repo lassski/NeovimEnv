@@ -1,18 +1,36 @@
-home = os.getenv("HOME") -- Hakee kotihakemiston
-pathExtension = home .. "/neovim/bin"
+-- Home directory
+home = assert(os.getenv("HOME"), "HOME environment variable is not set")
+
+-- Neovim installation
 installPrefix = home .. "/neovim"
+pathExtension = installPrefix .. "/bin"
 nvimSetupPath = home .. "/nvimsetup.sh"
-bashrcPath = home .. "/.bashrc"
+
+-- Neovim configuration
 nvimConfigPath = home .. "/.config/nvim"
 nvimInitFile = "init.lua"
-fontsPathOrigin = "./fonts"
-fontsPathDest = home .. "/.local/share/fonts" 
 localSharePath = home .. "/.local/share/nvim"
-libEventPath = "./libevent-*"
+
+-- Bash configuration
+bashrcPath = home .. "/.bashrc"
+
+-- Font installation
+fontsPathOrigin = "./fonts"
+fontsPathDest = home .. "/.local/share/fonts"
+
+-- Local package installation
 localInstallPath = home .. "/.local"
-ldLibPath = home .. "/.local/lib"
-ncursesPath = "./ncurses-*"
+ldLibPath = localInstallPath .. "/lib"
 localPkgConfigPath = localInstallPath .. "/lib/pkgconfig"
+
+-- Source directories
+libEventPath = "./libevent-*"
+ncursesPath = "./ncurses-*"
 tmuxPath = "./tmux-*"
-tmuxConfigFilePath = ".tmux.conf"
+
+-- Tmux configuration
+tmuxConfigFilePath = "./.tmux.conf"
 tmuxInstalledConfigFilePath = home .. "/.tmux.conf"
+
+-- Installation manifests
+manifestPath = localInstallPath .. "/share/install-manifests"
