@@ -20,6 +20,35 @@ local function remove(path)
     end
 end
 
+-- Remove directories matching a wildcard pattern
+local function removePattern(pattern)
+    if not pattern or pattern == "" then
+        return
+    end
+
+    local parent, name = pattern:match("^(.*)/([^/]*)$")
+
+    if not name then
+        parent = "."
+        name = pattern
+    end
+
+    local command = "find "
+        .. shellQuote(parent)
+        .. " -mindepth 1 -maxdepth 1"
+        .. " -type d"
+        .. " -name "
+        .. shellQuote(name)
+        .. " -exec rm -rf -- {} +"
+
+    local success, reason, code = os.execute(command)
+
+    if success ~= true and success ~= 0 then
+        print("Failed to remove directories matching: " .. pattern)
+        print(reason, code)
+    end
+end
+
 -- Remove a complete source line from a file
 local function removeLine(filePath, targetLine)
     local file = io.open(filePath, "r")
@@ -51,6 +80,7 @@ end
 
 -- Uninstall Neovim
 remove(installPrefix)
+remove("./neovim") -- Git clone
 remove(nvimSetupPath)
 remove(nvimConfigPath)
 remove(localSharePath)
@@ -58,15 +88,14 @@ remove(localSharePath)
 removeLine(bashrcPath, ". " .. nvimSetupPath)
 
 -- Uninstall fonts
--- WARNING: Removes the entire destination directory!
 -- remove(fontsPathDest)
 
 -- Uninstall libevent
-remove(libEventPath)
+removePattern(libEventPath)
 
 -- Uninstall ncurses
-remove(ncursesPath)
+removePattern(ncursesPath)
 
 -- Uninstall tmux
-remove(tmuxPath)
+removePattern(tmuxPath)
 remove(tmuxInstalledConfigFilePath)

@@ -1,5 +1,26 @@
 require("variables")
-require("helpers")
+local helpers = require("helpers")
+
+-- Check if needed paths exist
+local paths = {
+    libEventPath,
+    ncursesPath,
+    tmuxPath
+}
+
+for i, path in ipairs(paths) do
+    local foundPath = helpers.finddir(path:match("[^/]+$"))
+
+    if not foundPath then
+        error("Hakemistoa ei löydy: " .. path)
+    end
+
+    paths[i] = foundPath
+end
+
+libEventPath = paths[1]
+ncursesPath = paths[2]
+tmuxPath = paths[3]
 
 -- TMUX and prerequisites
 local command = "cd "
@@ -10,7 +31,7 @@ local command = "cd "
 	.. " --enable-shared"
 	.. " && "
 	.. "make && make install"
-execute(command)
+helpers.execute(command)
 
 command = "cd "
 	.. ncursesPath
@@ -21,7 +42,7 @@ command = "cd "
 	.. localPkgConfigPath
 	.. " && "
 	.. "make && make install"
-execute(command)
+helpers.execute(command)
 
 command = "cd "
 	.. tmuxPath
@@ -32,7 +53,7 @@ command = "cd "
 	.. localInstallPath
 	.. " && "
 	.. "make && make install"
-execute(command)
+helpers.execute(command)
 
 -- Fonts
 command = "mkdir -p "
@@ -45,15 +66,15 @@ command = "mkdir -p "
 	.. " && "
 	.. "fc-cache"
 
-execute(command)
+helpers.execute(command)
 
 -- Määritellään muuttujia polkujen ja git-repon kanssa
 local repoURL = "https://github.com/neovim/neovim"
 local cloneDirectory = "neovim"
 
-local cloneExists = isdir(cloneDirectory)
+local cloneExists = helpers.isdir(cloneDirectory)
 if not cloneExists then
-	execute("git clone " .. repoURL .. " " .. cloneDirectory)
+	helpers.execute("git clone " .. repoURL .. " " .. cloneDirectory)
 else
 	print("neovim git clone exists so we don't have download it.")
 end
@@ -71,12 +92,16 @@ command = "rm -rf "
 	.. "&& make install"
 
 -- Suorita komento
-execute(command)
+helpers.execute(command)
 
 -- Luodaan nvimsetup.sh ja kirjoitetaan sinne PATHin päivityskomento
 local nvimSetupFile = io.open(nvimSetupPath, "w") -- "w" avaa tiedoston kirjoitusta varten, olettaen sen luomista
 if nvimSetupFile then
-	nvimSetupFile:write("export PATH=$PATH:" .. pathExtension .. "\n")
+	nvimSetupFile:write(
+    "export PATH=$PATH:" .. pathExtension .. "\n"
+    .. "export LD_LIBRARY_PATH="
+    .. ldLibPath
+    .. ":$LD_LIBRARY_PATH\n")
 	nvimSetupFile:close()
 else
 	print("Tiedoston luonti epäonnistui: " .. nvimSetupPath)
@@ -122,16 +147,16 @@ end
 --            "mkdir " .. nvimConfigPath .. " && " ..
 --            "cp " .. nvimInitFile .. " " .. nvimConfigPath
 command = "rm -rf " .. nvimConfigPath .. " && " .. "cp -r " .. "starter/. " .. nvimConfigPath
-execute(command)
+helpers.execute(command)
 
 command = "cp " .. tmuxConfigFilePath .. " " .. home
-execute(command)
+helpers.execute(command)
 
 -- Muutetaan nvimsetup.sh-tiedoston käyttöoikeuksia
-execute("chmod 644 " .. nvimSetupPath)
+helpers.execute("chmod 644 " .. nvimSetupPath)
 
 -- Install rust
-execute("curl https://sh.rustup.rs -sSf | sh")
+helpers.execute("curl https://sh.rustup.rs -sSf | sh")
 
 -- Päivittämään PATH ympäristömuuttujan nykyisessä Lua-prosessissa,
 -- mutta tämä muutos ei ole pysyvä yli suorituskertojen
