@@ -1,5 +1,5 @@
-lua-*
+lua-*/
 neovim/
-libevent-*
-ncurses-*
-tmux-*
+libevent-*/
+ncurses-*/
+tmux-*/
