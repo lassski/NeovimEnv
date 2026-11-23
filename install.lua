@@ -39,7 +39,7 @@ helpers.installStaged(
 command =
     "cd " .. ncursesPath ..
     " && ./configure --prefix=" .. localInstallPath ..
-    " --with-shared --with-termlib --enable-pc-files" ..
+    " --with-shared --with-termlib --enable-pc-files --without-cxx-binding" ..
     " --with-pkg-config-libdir=" .. localPkgConfigPath ..
     " && make"
 
